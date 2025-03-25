@@ -43,6 +43,7 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
       }}
       {...other}
     >
+      {/*
       <IconWrapperStyle
         sx={{
           color: (theme) => theme.palette[color].dark,
@@ -55,6 +56,7 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
       >
         <Iconify icon={icon} width={24} height={24} />
       </IconWrapperStyle>
+      */}
 
       <Typography variant="h3">{fShortenNumber(total)}</Typography>
 

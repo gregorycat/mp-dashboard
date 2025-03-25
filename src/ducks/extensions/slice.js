@@ -48,7 +48,41 @@ const getVersion = (state, versionId) => {
 }
 
 export const initialState = {
+    providers: {
+        isLoading: false,
+        items: [],
+    },
     extensions: {
+        isLoading: false,
+        items: [],
+        cursor: undefined,
+        more: false
+    },
+    availableExtensions: {
+        isLoading: false,
+        items: [],
+        cursor: undefined,
+        more: false
+    },
+    microApps: {
+        isLoading: false,
+        items: [],
+        cursor: undefined,
+        more: false
+    },
+    widgets: {
+        isLoading: false,
+        items: [],
+        cursor: undefined,
+        more: false
+    },
+    availableMicroApps: {
+        isLoading: false,
+        items: [],
+        cursor: undefined,
+        more: false
+    },
+    availableWidgets: {
         isLoading: false,
         items: [],
         cursor: undefined,
@@ -78,6 +112,18 @@ const { actions, reducer } = createSlice({
     name: 'extensions',
     initialState,
     reducers: {
+        //Providers Loding
+        setIsLoadingProviders: (state, action) => {
+            const { payload } = action;
+            const { loading } = payload;
+
+            state.providers.isLoading = loading;
+        },
+         // set providers
+         addProviders: (state, action) => {
+            const { payload: providers } = action;
+            state.providers.items = providers;
+        },
         //Extension loading
         setIsLoadingExtensions: (state, action) => {
             const { payload } = action;
@@ -99,7 +145,62 @@ const { actions, reducer } = createSlice({
             state.extensions.items = extensions;
             state.extensions.cursor = undefined;
             state.extensions.more = false;
+
+            const microApps = [];
+            const widgets = [];
+
+            for (const extension of extensions) {
+                if (extension.category === 'micro_app') {
+                    microApps.push(extension);
+                    
+                }
+                if (extension.category === 'widget') {
+                    widgets.push(extension);
+                }
+            }
+            state.microApps.items = microApps;
+            state.widgets.items = widgets;
         },
+
+        // Available extension loading
+        setIsLoadingAvailableExtensions: (state, action) => {
+            const { payload } = action;
+            const { loading } = payload;
+
+            state.availableExtensions.isLoading = loading;
+        },
+
+        //Set available extensions
+        addAvailableExtensions: (state, action) => {
+            const { payload: extensions } = action;
+
+            state.availableExtensions.items.push(...extensions.items);
+            state.availableExtensions.cursor = extensions.cursor;
+            state.availableExtensions.more = extensions.more;
+        },
+
+        addAllAvailableExtensions: (state, action) => {
+            const { payload: extensions } = action;
+            state.availableExtensions.items = extensions;
+            state.availableExtensions.cursor = undefined;
+            state.availableExtensions.more = false;
+
+            const availableMicroApps = [];
+            const availableWidgets = [];
+
+            for (const extension of extensions) {
+                if (extension.category === 'micro_app') {
+                    availableMicroApps.push(extension);
+                    
+                }
+                if (extension.category === 'widget') {
+                    availableWidgets.push(extension);
+                }
+            }
+            state.availableMicroApps.items = availableMicroApps;
+            state.availableWidgets.items = availableWidgets;
+        },
+
         //Partners loading
         setIsLoadingPartners: (state, action) => {
             const { payload } = action;

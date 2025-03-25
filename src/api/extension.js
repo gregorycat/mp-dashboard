@@ -41,11 +41,29 @@ export const getExtensions = async ({ token, cursor, since, categories, status, 
     return {};
 };
 
+export const getAvailableExtensions = async({ token, cursor}) => {
+    let param = '';
+
+    if (cursor) {
+        param = `&cursor=${cursor}`
+    }
+
+    const { data } = await getInstance({ token }).get(`${BASE_URL}/v2/available-extensions?maxResults=100${param}`);
+
+    if (data) {
+        return {
+            items: data.items,
+            more: data.more,
+            cursor: data.cursor
+        }
+    }
+}
+
 export const getExtensionVersions = async ({ token, cursor, extensionId }) => {
     let param = '&sort=created_at';
 
     if (cursor) {
-        param = `&cursor=${cursor}`;
+        param = `${param}&cursor=${cursor}`;
     }
 
     const { data } = await getInstance({ token }).get(`${BASE_URL}/v2/extensions/${extensionId}/versions?maxResults=100${param}`);

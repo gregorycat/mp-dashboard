@@ -48,6 +48,7 @@ export const Extension = ({ extensionList, token, loadExtensionVersions, isVersi
   const [currentExtension, setCurrentExtension] = useState();
   const [rejectedVersion, setRejectedVersion] = useState();
   const [approvedVersion, setApprovedVersion] = useState();
+  const [reviewsNb, setReviewsNb] = useState();
 
   //Load versions review
   useEffect(() => {
@@ -75,7 +76,7 @@ export const Extension = ({ extensionList, token, loadExtensionVersions, isVersi
   useEffect(() => {
     if (extensionList && extensionList.length > 0) {
       const extension = find(extensionList, (ext) => ext.id === id);
-      console.log(extension);
+      //console.log(extension);
       setCurrentExtension(extension);
     }
   }, [extensionList, currentExtension]);
@@ -90,15 +91,18 @@ export const Extension = ({ extensionList, token, loadExtensionVersions, isVersi
   const browseRevisions = () => {
     const rejections = [];
     const approvals = [];
+    const reviews = []
 
     for (const version of currentExtension.versions) {
       if (version.reviews) {
         rejections.push(...version.reviews.filter((review) => review.status === 'rejected'));
         approvals.push(...version.reviews.filter((review) => review.status !== 'rejected'));
+        reviews.push(...version.reviews);
       }
     }
     setRejectedVersion(rejections);
     setApprovedVersion(approvals);
+    setReviewsNb(reviews);
   }
 
   return (
@@ -155,6 +159,14 @@ export const Extension = ({ extensionList, token, loadExtensionVersions, isVersi
                       <Typography variant="body2" gutterBottom sx={{ mb: 1 }}>
                         {currentExtension.category}
                       </Typography>
+                      <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                        Topics
+                      </Typography>
+                      <Typography variant="body2" gutterBottom sx={{ mb: 1 }}>
+                        {currentExtension.topics.map((topic) => {
+                          <span>{topic}</span>
+                        })}
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Box>
@@ -166,6 +178,9 @@ export const Extension = ({ extensionList, token, loadExtensionVersions, isVersi
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <AppWidgetSummary title="Rejections" total={rejectedVersion ? rejectedVersion.length : 0} color={rejectedVersion && rejectedVersion.length > 0 ? "error" : "info"} icon={'bx:comment-error'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Reviews" total={reviewsNb ? reviewsNb.length : 0} color="info" icon={'bx:comment-error'} />
             </Grid>
 
             <Grid item xs={12} md={6} lg={8}>

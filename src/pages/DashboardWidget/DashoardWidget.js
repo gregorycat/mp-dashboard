@@ -18,17 +18,18 @@ import {
 import { AppCalendar } from 'src/sections/@dashboard/app/AppCalendar';
 import { AppLine } from 'src/sections/@dashboard/app/AppLine';
 import { AppPie } from 'src/sections/@dashboard/app/AppPie';
-import { AppTableExtension } from 'src/sections/@dashboard/app/AppTableExtension';
+import { AppTableMicroApp } from 'src/sections/@dashboard/app/AppTableMicroApp';
 
 // ----------------------------------------------------------------------
 
-export const DashoardExtension = ({ extensionsList, availableExtensionsList, isExtensionsLoading, isAvailableExtensionsLoading, token, versionsList, isVersionLoading, loadAllExtensions, loadAllAvailableExtensions, loadExtensionsVersions }) => {
+export const DashoardMicroApp = ({ microAppList, availableMicroAppsList, isExtensionsLoading, isAvailableExtensionsLoading, token, loadAllExtensions, loadAllAvailableExtensions }) => {
   const theme = useTheme();
   const [extensionDraft, setExtensionDraft] = useState([]);
   const [extensionNoVersion, setExtensionNoVersion] = useState([]);
   const [dateRange, setDateRange] = useState('all');
   const [filteredExtensionList, setFilteredExtensionList] = useState([]);
   const [filteredAvailableExtensionList, setFilteredAvailableExtensionList] = useState([]);
+
   const fetchExtensions = async () => {
     loadAllExtensions(token);
   }
@@ -38,13 +39,13 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
   }
 
   useEffect(() => {
-    if (!isExtensionsLoading && extensionsList.length === 0) {
+    if (!isExtensionsLoading && microAppList.length === 0) {
       fetchExtensions();
     }
-  }, [extensionsList, fetchExtensions, isExtensionsLoading]);
+  }, [microAppList, fetchExtensions, isExtensionsLoading]);
 
   useEffect(() => {
-    if (!isAvailableExtensionsLoading && availableExtensionsList.length === 0) {
+    if (!isAvailableExtensionsLoading && availableMicroAppsList.length === 0) {
       fetchAvailableExtensions();
     }
   })
@@ -64,22 +65,15 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
     setExtensionNoVersion(array);
   }
 
-  const getMobileCompatibility = () => {
-    const array = filter(filteredExtensionList, (extension) => {
-      return extension.version && extension.version.status === 'deployed' && extension.version.isMobileCompatible
-    });
-  }
-
   useEffect(() => {
     if (filteredExtensionList.length > 0) {
       getExtensionInDraft();
       getExtensionWithNoVersion();
-      getMobileCompatibility()
     }
   }, [filteredExtensionList.length]);
 
   useEffect(() => {
-    if (extensionsList.length > 0 || availableExtensionsList) {
+    if (microAppList.length > 0 || availableMicroAppsList) {
       let minDate;
       switch (dateRange) {
         case 'month':
@@ -95,7 +89,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
           break;
       }
 
-      const filteredList = filter(extensionsList, (item) => {
+      const filteredList = filter(microAppList, (item) => {
         if (dateRange === 'all') {
           return true;
         }
@@ -103,7 +97,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
         return moment(item.createdAt).isAfter(minDate);
       });
 
-      const filteredAvailableList = filter(availableExtensionsList, (item) => {
+      const filteredAvailableList = filter(availableMicroAppsList, (item) => {
         if (dateRange === 'all') {
           return true;
         }
@@ -115,7 +109,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
       setFilteredAvailableExtensionList(filteredAvailableList);
     }
 
-  }, [extensionsList, dateRange]);
+  }, [microAppList, dateRange]);
 
   const handleDateRangeClick = (range) => {
     setDateRange(range);
@@ -163,53 +157,44 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Created Extensions" total={filteredExtensionList.length} color="success" icon={'ant-design:appstore-outlined'} />
+            <AppWidgetSummary title="Micro-apps" total={filteredExtensionList.length} color="success" icon={'ant-design:appstore-outlined'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Extensions available" total={filteredAvailableExtensionList.length} color="success" icon={'ant-design:appstore-add-outlined'} />
+            <AppWidgetSummary title="Micro-apps available" total={filteredAvailableExtensionList.length} color="success" icon={'ant-design:appstore-add-outlined'} />
           </Grid>
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Extensions currenlty in dev" total={extensionDraft.length} color="info" icon={'ant-design:appstore-add-outlined'} />
+            <AppWidgetSummary title="Micro-apps currenlty in dev" total={extensionDraft.length} color="info" icon={'ant-design:appstore-add-outlined'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Extensions without version" total={extensionNoVersion.length} color="warning" icon={'eva:slash-outline'} />
+            <AppWidgetSummary title="Micro-apps without version" total={extensionNoVersion.length} color="warning" icon={'eva:slash-outline'} />
           </Grid>
 
 
           <Grid item xs={12} md={6} lg={12}>
             <AppLine
-              title="Extension creation"
+              title="Micro-apps creation"
               subheader="Creation over time"
               dateRange={dateRange}
               list={filteredExtensionList}
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={6}>
-            <AppPie
-              title="Extension repartition"
-              subheader="Repartition by categories"
-              list={filteredExtensionList}
-              splitAttribute='category'
-            />
-          </Grid>
-
           <Grid item xs={12} md={6} lg={8}>
             <AppCalendar
-              title="Extension creation"
+              title="Micro-apps creation"
               subheader="Creation over last year"
-              list={extensionsList}
+              list={microAppList}
               color="nivo"
             />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
             <AppPie
-              title="Extension repartition"
+              title="Micro-apps repartition"
               subheader="Public vs. Private"
               list={filteredExtensionList}
               splitAttribute='public'
@@ -220,7 +205,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
 
           <Grid item xs={12} md={12} lg={12}>
             {filteredExtensionList && filteredExtensionList.length > 0 && (
-              <AppTableExtension list={filteredExtensionList} />
+              <AppTableMicroApp list={filteredExtensionList} />
             )}
           </Grid>
 

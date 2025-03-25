@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
-import { filter } from 'lodash';
+import { find, filter, forEach, includes } from 'lodash';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography, Box, Chip } from '@mui/material';
-import { CalendarMonth, AllInclusive } from '@mui/icons-material';
+import { CalendarMonth, AllInclusive, PeopleOutline } from '@mui/icons-material';
+
 import moment from 'moment';
 
 // components
@@ -18,17 +19,26 @@ import {
 import { AppCalendar } from 'src/sections/@dashboard/app/AppCalendar';
 import { AppLine } from 'src/sections/@dashboard/app/AppLine';
 import { AppPie } from 'src/sections/@dashboard/app/AppPie';
-import { AppTableExtension } from 'src/sections/@dashboard/app/AppTableExtension';
+import { AppTableMicroApp } from 'src/sections/@dashboard/app/AppTableMicroApp';
+
+import { lumappsPublishers } from '../../constants';
 
 // ----------------------------------------------------------------------
 
-export const DashoardExtension = ({ extensionsList, availableExtensionsList, isExtensionsLoading, isAvailableExtensionsLoading, token, versionsList, isVersionLoading, loadAllExtensions, loadAllAvailableExtensions, loadExtensionsVersions }) => {
+export const DashoardMicroApp = ({ microAppList, availableMicroAppsList, isExtensionsLoading, isAvailableExtensionsLoading, token, loadAllExtensions, loadAllAvailableExtensions }) => {
   const theme = useTheme();
   const [extensionDraft, setExtensionDraft] = useState([]);
   const [extensionNoVersion, setExtensionNoVersion] = useState([]);
   const [dateRange, setDateRange] = useState('all');
+  const [displayLumAppsPublisher, setDisplayLumAppsPublisher] = useState(true)
   const [filteredExtensionList, setFilteredExtensionList] = useState([]);
   const [filteredAvailableExtensionList, setFilteredAvailableExtensionList] = useState([]);
+  const [partnerAvailableMicroAppList, setPartnerAvailableMicroAppList] = useState([]);
+  const [partnerMicroAppList, setPartnerMicroAppList] = useState([]);
+  const [filteredAvailableMicroAppsPerPartner, setFilteredAvailableMicroAppsPerPartner] = useState([]);
+
+  console.log(filteredAvailableExtensionList.length / filteredAvailableMicroAppsPerPartner.length)
+
   const fetchExtensions = async () => {
     loadAllExtensions(token);
   }
@@ -38,48 +48,87 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
   }
 
   useEffect(() => {
-    if (!isExtensionsLoading && extensionsList.length === 0) {
+    if (!microAppList) {
+      return
+    }
+
+    if (!isExtensionsLoading && microAppList.length === 0) {
       fetchExtensions();
     }
-  }, [extensionsList, fetchExtensions, isExtensionsLoading]);
+  }, [microAppList, fetchExtensions, isExtensionsLoading]);
 
   useEffect(() => {
-    if (!isAvailableExtensionsLoading && availableExtensionsList.length === 0) {
+    if (!availableMicroAppsList) {
+      return;
+    }
+    if (!isAvailableExtensionsLoading && availableMicroAppsList.length === 0) {
       fetchAvailableExtensions();
     }
   })
+  useEffect(() => {
+    if (!isAvailableExtensionsLoading 
+      && filteredAvailableExtensionList.length > 0 
+      && filteredExtensionList.length > 0) {
+      getPartnerMicroApps();
+    }
+  }, [filteredExtensionList, filteredAvailableExtensionList])
 
   const getExtensionInDraft = () => {
-    const array = filter(filteredExtensionList, (extenson) => {
+    const list = displayLumAppsPublisher ? filteredExtensionList : partnerMicroAppList;
+    
+    const array = filter(list, (extenson) => {
       return extenson.version && extenson.version.status === 'draft';
     });
 
     setExtensionDraft(array);
   }
+
   const getExtensionWithNoVersion = () => {
-    const array = filter(filteredExtensionList, (extenson) => {
+    const list = displayLumAppsPublisher ? filteredExtensionList : partnerMicroAppList;
+    const array = filter(list, (extenson) => {
       return !extenson.version;
     });
 
     setExtensionNoVersion(array);
   }
 
-  const getMobileCompatibility = () => {
-    const array = filter(filteredExtensionList, (extension) => {
-      return extension.version && extension.version.status === 'deployed' && extension.version.isMobileCompatible
+  const getPartnerMicroApps = () => {
+    const arrayAvailable = filter(filteredAvailableExtensionList, (extension) => {
+      return !includes(lumappsPublishers, extension.partnerId)
     });
+
+    const array = filter(filteredExtensionList, (extension) => {
+      return !includes(lumappsPublishers, extension.partnerId)
+    });
+
+    let arrayPerPartner = [];
+    forEach(filteredAvailableExtensionList, (extension) => {
+      const partner = find(arrayPerPartner, { publisherId: extension.partnerId});
+
+      if (partner) {
+        partner.count += 1;
+      } else {
+        arrayPerPartner.push({
+          publisherId: extension.partnerId,
+          count: 1
+        });
+      }
+    });
+
+    setFilteredAvailableMicroAppsPerPartner(arrayPerPartner);
+    setPartnerAvailableMicroAppList(arrayAvailable)
+    setPartnerMicroAppList(array)
   }
 
   useEffect(() => {
     if (filteredExtensionList.length > 0) {
       getExtensionInDraft();
       getExtensionWithNoVersion();
-      getMobileCompatibility()
     }
-  }, [filteredExtensionList.length]);
+  }, [filteredExtensionList.length, displayLumAppsPublisher]);
 
   useEffect(() => {
-    if (extensionsList.length > 0 || availableExtensionsList) {
+    if (microAppList.length > 0 || availableMicroAppsList) {
       let minDate;
       switch (dateRange) {
         case 'month':
@@ -95,7 +144,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
           break;
       }
 
-      const filteredList = filter(extensionsList, (item) => {
+      const filteredList = filter(microAppList, (item) => {
         if (dateRange === 'all') {
           return true;
         }
@@ -103,7 +152,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
         return moment(item.createdAt).isAfter(minDate);
       });
 
-      const filteredAvailableList = filter(availableExtensionsList, (item) => {
+      const filteredAvailableList = filter(availableMicroAppsList, (item) => {
         if (dateRange === 'all') {
           return true;
         }
@@ -115,12 +164,15 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
       setFilteredAvailableExtensionList(filteredAvailableList);
     }
 
-  }, [extensionsList, dateRange]);
+  }, [microAppList, dateRange]);
 
   const handleDateRangeClick = (range) => {
     setDateRange(range);
   }
 
+  const handleDisplayLumAppsPublisherClick = () => {
+    setDisplayLumAppsPublisher(!displayLumAppsPublisher);
+  }
 
   return (
     <Page title="Dashboard">
@@ -158,60 +210,64 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
             label="Last Month"
             onClick={() => handleDateRangeClick('month')}
           />
+          <Chip
+            sx={{ mr: 2 }}
+            color={!displayLumAppsPublisher ? 'primary' : 'default'}
+            icon={<PeopleOutline />}
+            label="Exclude LumApps publisher"
+            onClick={() => handleDisplayLumAppsPublisherClick()}
+          />
 
         </Box>
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Created Extensions" total={filteredExtensionList.length} color="success" icon={'ant-design:appstore-outlined'} />
+            <AppWidgetSummary title="Created Micro-apps" total={displayLumAppsPublisher ? filteredExtensionList.length : partnerMicroAppList.length} color="success" icon={'ant-design:appstore-outlined'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Extensions available" total={filteredAvailableExtensionList.length} color="success" icon={'ant-design:appstore-add-outlined'} />
+            <AppWidgetSummary title="Micro-apps available" total={displayLumAppsPublisher ? filteredAvailableExtensionList.length : partnerAvailableMicroAppList.length} color="success" icon={'ant-design:appstore-add-outlined'} />
           </Grid>
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Extensions currenlty in dev" total={extensionDraft.length} color="info" icon={'ant-design:appstore-add-outlined'} />
+            <AppWidgetSummary title="Micro-apps currenlty in dev" total={extensionDraft.length} color="info" icon={'ant-design:appstore-add-outlined'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Extensions without version" total={extensionNoVersion.length} color="warning" icon={'eva:slash-outline'} />
+            <AppWidgetSummary title="Micro-apps without version" total={extensionNoVersion.length} color="warning" icon={'eva:slash-outline'} />
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Published Micro-apps per publisher" total={Math.ceil((displayLumAppsPublisher ? filteredAvailableExtensionList.length : partnerAvailableMicroAppList.length) / filteredAvailableMicroAppsPerPartner.length)} color="info" icon={'ant-design:appstore-add-outlined'} />
           </Grid>
 
 
           <Grid item xs={12} md={6} lg={12}>
             <AppLine
-              title="Extension creation"
+              title="Micro-apps creation"
               subheader="Creation over time"
               dateRange={dateRange}
+              displayLumAppsPublisher={displayLumAppsPublisher}
               list={filteredExtensionList}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={6}>
-            <AppPie
-              title="Extension repartition"
-              subheader="Repartition by categories"
-              list={filteredExtensionList}
-              splitAttribute='category'
             />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
             <AppCalendar
-              title="Extension creation"
+              title="Micro-apps creation"
               subheader="Creation over last year"
-              list={extensionsList}
+              displayLumAppsPublisher={displayLumAppsPublisher}
+              list={microAppList}
               color="nivo"
             />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
             <AppPie
-              title="Extension repartition"
+              title="Micro-apps repartition"
               subheader="Public vs. Private"
-              list={filteredExtensionList}
+              list={displayLumAppsPublisher ? filteredExtensionList : partnerMicroAppList}
               splitAttribute='public'
               color="category10"
               labelCompute={(attributeValue) => {return attributeValue === 'true' ? 'Public' : 'Private' }}
@@ -220,7 +276,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
 
           <Grid item xs={12} md={12} lg={12}>
             {filteredExtensionList && filteredExtensionList.length > 0 && (
-              <AppTableExtension list={filteredExtensionList} />
+              <AppTableMicroApp list={displayLumAppsPublisher ? filteredExtensionList : partnerMicroAppList} />
             )}
           </Grid>
 

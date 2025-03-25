@@ -1,0 +1,383 @@
+{
+    "type": "AdaptiveCard",
+    "version": "1.6",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "I can help with information and completing activities to do with holidays. Are you looking gor help for ...",
+            "weight": "Bolder",
+            "size": "Medium"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "title": "Yourself",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "I can help with the following",
+                        "weight": "Bolder",
+                        "size": "Medium"
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.ShowCard",
+                        "title": "Booking holiday",
+                        "card": {
+                            "type": "AdaptiveCard",
+                            "body": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Do you want to...",
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "Action.ShowCard",
+                                    "title": "Book time off",
+                                    "card": {
+                                        "type": "AdaptiveCard",
+                                        "body": [
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "Do you want to book time off in?",
+                                                "weight": "Bolder",
+                                                "size": "Medium"
+                                            }
+                                        ],
+                                        "actions": [
+                                            {
+                                                "type": "Action.ShowCard",
+                                                "title": "This week or a previous week",
+                                                "card": {
+                                                    "type": "AdaptiveCard",
+                                                    "body": [
+                                                        {
+                                                            "type": "TextBlock",
+                                                            "text": "Do you want to book time off in?",
+                                                            "weight": "Bolder",
+                                                            "size": "Medium"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Action.ShowCard",
+                                                "title": "A future week",
+                                                "card": {
+                                                    "type": "AdaptiveCard",
+                                                    "body": [
+                                                        {
+                                                            "type": "TextBlock",
+                                                            "text": "Carte Niveau 4B",
+                                                            "weight": "Bolder",
+                                                            "size": "Medium"
+                                                        },
+                                                        {
+                                                            "type": "TextBlock",
+                                                            "text": "Ceci est la dernière carte du Niveau 4B.",
+                                                            "wrap": true
+                                                        }
+                                                    ],
+                                                    "actions": [
+                                                        {
+                                                            "type": "Action.Submit",
+                                                            "title": "Terminer",
+                                                            "data": {
+                                                                "cardType": "Fin"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "Action.ShowCard",
+                                    "title": "Check your holiday balance",
+                                    "card": {
+                                        "type": "AdaptiveCard",
+                                        "body": [
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "Carte Niveau 4B",
+                                                "weight": "Bolder",
+                                                "size": "Medium"
+                                            },
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "Ceci est la dernière carte du Niveau 4B.",
+                                                "wrap": true
+                                            }
+                                        ],
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Terminer",
+                                                "data": {
+                                                    "cardType": "Fin"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "Action.ShowCard",
+                                    "title": "Check the policy",
+                                    "card": {
+                                        "type": "AdaptiveCard",
+                                        "body": [
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "Carte Niveau 4B",
+                                                "weight": "Bolder",
+                                                "size": "Medium"
+                                            },
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "Ceci est la dernière carte du Niveau 4B.",
+                                                "wrap": true
+                                            }
+                                        ],
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Terminer",
+                                                "data": {
+                                                    "cardType": "Fin"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "Action.ShowCard",
+                                    "title": "Something else",
+                                    "card": {
+                                        "type": "AdaptiveCard",
+                                        "body": [
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "Carte Niveau 4B",
+                                                "weight": "Bolder",
+                                                "size": "Medium"
+                                            },
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "Ceci est la dernière carte du Niveau 4B.",
+                                                "wrap": true
+                                            }
+                                        ],
+                                        "actions": [
+                                            {
+                                                "type": "Action.Submit",
+                                                "title": "Terminer",
+                                                "data": {
+                                                    "cardType": "Fin"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "Action.ShowCard",
+                        "title": "Amending or cancelling a holiday",
+                        "card": {
+                            "type": "AdaptiveCard",
+                            "body": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "AMENDING OR CANCELLING A HOLIDAY",
+                                    "weight": "Bolder",
+                                    "wrap": true,
+                                    "size": "large",
+                                    "separator": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "20/07/2022",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Based on your answers you want to change or cancel a holiday you have already booked. This activity is completed by changing the absence inthe Worday Absence App. Use the link below to see how to amend or cancel your holiday or go straight to Workday to make changes.",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "[Workday Absence App](https://www.google.com/)",
+                                    "wrap": true
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "Action.Submit",
+                                    "title": "Job Aid: Amending or cancelling short term time off",
+                                    "data": {
+                                        "cardType": "Fin"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "Action.ShowCard",
+                        "title": "Holiday balances and entitlements",
+                        "card": {
+                            "type": "AdaptiveCard",
+                            "body": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Carte Niveau 3B",
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Ceci est la carte du Niveau 3B.",
+                                    "wrap": true
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "Action.Submit",
+                                    "title": "Terminer",
+                                    "data": {
+                                        "cardType": "Fin"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "Action.ShowCard",
+                        "title": "Viewing your holiday requestes and approvals",
+                        "card": {
+                            "type": "AdaptiveCard",
+                            "body": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Carte Niveau 3B",
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Ceci est la carte du Niveau 3B.",
+                                    "wrap": true
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "Action.Submit",
+                                    "title": "Terminer",
+                                    "data": {
+                                        "cardType": "Fin"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "Action.ShowCard",
+                        "title": "Bank holiday time off",
+                        "card": {
+                            "type": "AdaptiveCard",
+                            "body": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Carte Niveau 3B",
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Ceci est la carte du Niveau 3B.",
+                                    "wrap": true
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "Action.Submit",
+                                    "title": "Terminer",
+                                    "data": {
+                                        "cardType": "Fin"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "Action.ShowCard",
+                        "title": "Our policies on holidays and bank holidays",
+                        "card": {
+                            "type": "AdaptiveCard",
+                            "body": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Carte Niveau 3B",
+                                    "weight": "Bolder",
+                                    "size": "Medium"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Ceci est la carte du Niveau 3B.",
+                                    "wrap": true
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "Action.Submit",
+                                    "title": "Terminer",
+                                    "data": {
+                                        "cardType": "Fin"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "People Manger activities",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Carte Niveau 2B",
+                        "weight": "Bolder",
+                        "size": "Medium"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Choisissez une option pour continuer:",
+                        "wrap": true
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Submit",
+                        "title": "Terminer",
+                        "data": {
+                            "cardType": "Fin"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+}

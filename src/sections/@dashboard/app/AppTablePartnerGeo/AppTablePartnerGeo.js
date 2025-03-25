@@ -23,13 +23,9 @@ import { UserListHead, UserListToolbar, UserMoreMenu } from '../../user';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-    { id: 'name.en', label: 'Name', alignRight: false },
-    { id: 'contact.website', label: 'Website', alignRight: false },
-    { id: 'contact.email', label: 'Email', alignRight: false },
-    { id: 'createdAt', label: 'Creation Date', alignRight: false },
-    { id: 'extensionCount', label: '# of extensions', alignRight: false },
-    { id: 'location.country', label: 'Location', alignRight: false},
-    { id: '' },
+    { id: 'location.country', label: 'Country', alignRight: false},
+    { id: 'location.region', label: 'Region', alignRight: false},
+    { id: 'value', label: 'Number', alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
@@ -63,7 +59,7 @@ function applySortFilter(array, comparator, query) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-export const AppTable = ({ list }) => {
+export const AppTablePartnerGeo = ({ list }) => {
     const [page, setPage] = useState(0);
     const [order, setOrder] = useState('asc');
     const [selected, setSelected] = useState([]);
@@ -122,10 +118,8 @@ export const AppTable = ({ list }) => {
 
     return (
         <Card>
-            <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
-
-
-            <TableContainer sx={{ minWidth: 800 }}>
+           
+            <TableContainer sx={{ minWidth: 750 }}>
                 <Table>
                     <UserListHead
                         order={order}
@@ -138,8 +132,8 @@ export const AppTable = ({ list }) => {
                     />
                     <TableBody>
                         {filteredItems.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                            const { id, name, contact, icon, createdAt, location, extensionCount } = row;
-                            const isItemSelected = selected.indexOf(name) !== -1;
+                            const { id, value, location } = row;
+                            const isItemSelected = selected.indexOf(id) !== -1;
 
                             return (
                                 <TableRow
@@ -151,24 +145,11 @@ export const AppTable = ({ list }) => {
                                     aria-checked={isItemSelected}
                                 >
                                     <TableCell padding="checkbox">
-                                        <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />
+                                        <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, id)} />
                                     </TableCell>
-                                    <TableCell component="th" scope="row" padding="none">
-                                        <Stack direction="row" alignItems="center" spacing={2}>
-                                            <Avatar sx={{ bgcolor: 'white' }} alt={name} src={icon.en} />
-                                            <Typography variant="subtitle2" noWrap>
-                                                {name.en}
-                                            </Typography>
-                                        </Stack>
-                                    </TableCell>
-                                    <TableCell align="left">{contact.website}</TableCell>
-                                    <TableCell align="left">{contact.email}</TableCell>
-                                    <TableCell align="left">{moment(createdAt).format('DD/MM/YYYY')}</TableCell>
-                                    <TableCell align="center">{extensionCount}</TableCell>
-                                    <TableCell align="center">{location ? location.country : 'N/A'}</TableCell>
-                                    <TableCell align="right">
-                                        <UserMoreMenu detailsLink={`/dashboard/partner/${id}`}/>
-                                    </TableCell>
+                                    <TableCell align="left">{location ? location.country : 'N/A'}</TableCell>
+                                    <TableCell align="left">{location ? location.region : 'N/A'}</TableCell>
+                                    <TableCell align="left">{value}</TableCell>
                                 </TableRow>
                             );
                         })}

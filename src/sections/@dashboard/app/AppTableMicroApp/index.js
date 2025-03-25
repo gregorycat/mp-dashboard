@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { loadAllPartners } from 'src/ducks/extensions/thunk';
 import { partnersSelector, partnerListSelector} from 'src/ducks/extensions/selector';
 import { userTokenSelector, } from 'src/ducks/user/selector';
-import { AppTableExtension } from './AppTableExtension';
+import { AppTableMicroApp } from './AppTableMicroApp';
 
 const mapStateToProps = (state, ownProps) => {
     const partnersList = partnerListSelector(state);
@@ -17,6 +17,6 @@ const mapDispatchToProps = {
     loadAllPartners,
 };
 
-const ConnectedAppTableExtension = connect(mapStateToProps, mapDispatchToProps)(AppTableExtension);
+const ConnectedAppTableMicroApp = connect(mapStateToProps, mapDispatchToProps)(AppTableMicroApp);
 
-export { ConnectedAppTableExtension as AppTableExtension };
+export { ConnectedAppTableMicroApp as AppTableMicroApp };

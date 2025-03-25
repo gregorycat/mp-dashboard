@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
-import { filter } from 'lodash';
+import { filter, forEach, find } from 'lodash';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -16,22 +16,13 @@ import moment from 'moment';
 
 // components
 import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
 // sections
-import {
-  AppTasks,
-  AppNewsUpdate,
-  AppOrderTimeline,
-  AppCurrentVisits,
-  AppTrafficBySite,
-  AppWidgetSummary,
-  AppCurrentSubject,
-  AppConversionRates,
-} from '../../sections/@dashboard/app';
-
+import { AppWidgetSummary } from '../../sections/@dashboard/app';
 import { AppCalendar } from 'src/sections/@dashboard/app/AppCalendar';
 import { AppLine } from 'src/sections/@dashboard/app/AppLine';
 import { AppTable } from 'src/sections/@dashboard/app/AppTable';
+import { AppGeoMap } from 'src/sections/@dashboard/app/AppGeoMap';
+import { AppTablePartnerGeo } from 'src/sections/@dashboard/app/AppTablePartnerGeo';
 
 // ----------------------------------------------------------------------
 
@@ -107,7 +98,7 @@ export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoadi
     if (filteredPartnerList.length > 0 && extensionsList.length > 0) {
       getPartnerWithExtension()
     }
-  },[filteredPartnerList, extensionsList])
+  }, [filteredPartnerList, extensionsList])
 
   const getPartnerWithExtension = () => {
     const partners = [];
@@ -125,6 +116,31 @@ export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoadi
 
   const handleDateRangeClick = (range) => {
     setDateRange(range);
+  }
+
+  const getPublisherGeoData = () => {
+    const mapData = [];
+    forEach(filteredPartnerList, (partner) => {
+      const data = find(mapData, (mData) => {
+        if (partner.location) {
+          return mData.id === partner.location.countryCode
+        }
+        console.log(partner)
+        return false;
+      });
+
+      if (data) {
+        data.value += 1;
+      } else {
+        mapData.push({
+          id: partner.location ? partner.location.countryCode : 'N/A',
+          value: 1,
+          location: partner.location
+        });
+      }
+    });
+
+    return mapData
   }
 
   return (
@@ -168,7 +184,7 @@ export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoadi
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Publishers" total={filteredPartnerList.length} color="success" icon={'ant-design:user-outlined'} />
+            <AppWidgetSummary title="Enrolled Publishers" total={filteredPartnerList.length} color="success" icon={'ant-design:user-outlined'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -182,6 +198,16 @@ export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoadi
               dateRange={dateRange}
               list={filteredPartnerList}
             />
+          </Grid>
+
+          <Grid item xs={12} md={5} lg={6}>
+            {filteredPartnerList && filteredPartnerList.length > 0 && (
+              <AppGeoMap title="Publishers location repartition" data={getPublisherGeoData()} />
+            )}
+          </Grid>
+
+          <Grid item xs={12} md={7} lg={6}>
+            <AppTablePartnerGeo list={getPublisherGeoData()} />
           </Grid>
 
           <Grid item xs={12} md={12} lg={12}>

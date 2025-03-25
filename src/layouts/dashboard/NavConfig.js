@@ -12,9 +12,19 @@ const navConfig = [
     icon: getIcon('eva:cube-fill'),
   },
   {
+    title: 'micro-apps',
+    path: '/dashboard/micro-apps',
+    icon: getIcon('eva:grid-outline'),
+  },
+  {
     title: 'publishers',
     path: '/dashboard/partners',
     icon: getIcon('eva:people-fill'),
+  },
+  {
+    title: 'providers',
+    path: '/dashboard/providers',
+    icon: getIcon('eva:clipboard-outline'),
   }
 ];
 

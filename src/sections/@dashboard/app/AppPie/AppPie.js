@@ -37,7 +37,6 @@ export const AppPie = ({ title, subheader, list, splitAttribute, concatAttribute
                     aggregation['private / open'] += 1;
                 } else if (!element.public && element.availability === 'marketplace') {
                     aggregation['private / marketplace'] += 1;
-                    console.log(element.name.en)
                 }
             });
 

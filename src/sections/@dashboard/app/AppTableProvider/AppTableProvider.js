@@ -22,18 +22,16 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import SearchNotFound from '../../../../components/SearchNotFound';
 import Label from '../../../../components/Label';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../../user';
+import { lumappsPublishers } from '../../../../constants';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-    { id: 'name.en', label: 'Name', alignLeft: true },
-    { id: 'catogory', label: 'Type', alignLeft: false },
-    { id: 'public', label: 'Visibility', alignLeft: false },
-    { id: 'availability', label: 'Availability', alignLeft: false },
-    { id: 'createdAt', label: 'Creation Date', alignLeft: false },
-    { id: 'version.status', label: 'Last version status', alignLeft: false },
-    { id: 'version.isMobileCompatible', label: 'Mobile compatible', alignLeft: false },
-    { id: 'partnerId', label: 'Publisher', alignLeft: false },
+    { id: 'name', label: 'Name', alignLeft: true },
+    { id: 'nbExtensions', label: 'Nb of Extension', alignLeft: false },
+    { id: 'nbMicroApps', label: 'Nb of Micro-apps', alignLeft: false },
+    { id: 'nbWidgets', label: 'Nb of Widgets', alignLeft: false },
+    { id: 'nbSearch', label: 'Nb of Search Ext.', alignLeft: false },
     { id: '' },
 ];
 
@@ -68,23 +66,13 @@ function applySortFilter(array, comparator, query) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-export const AppTableExtension = ({ partnersList, isPartnersLoading, token, loadPartners, loadAllPartners, list }) => {
+export const AppTableProvider = ({ list, computedProviderList, displayLumAppsPublisher }) => {
     const [page, setPage] = useState(0);
     const [order, setOrder] = useState('asc');
     const [selected, setSelected] = useState([]);
     const [orderBy, setOrderBy] = useState('name');
     const [filterName, setFilterName] = useState('');
     const [rowsPerPage, setRowsPerPage] = useState(5);
-
-    const fetchPartners = async () => {
-        loadAllPartners(token);
-    }
-
-    useEffect(() => {
-        if (!isPartnersLoading && partnersList.length === 0) {
-            fetchPartners();
-        }
-    }, [partnersList, fetchPartners, isPartnersLoading]);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -129,78 +117,31 @@ export const AppTableExtension = ({ partnersList, isPartnersLoading, token, load
         setFilterName(event.target.value);
     };
 
+    const getNumberOfExtension = (providerId, extType) => {
+        const list = filter(computedProviderList, (provider) => {
+            if (displayLumAppsPublisher) {
+                if (!extType) {
+                    return provider.id === providerId
+                } else {
+                    return provider.id === providerId && provider.extension.category === extType
+                }
+            } else {
+                if (!extType) {
+                    return provider.id === providerId && !lumappsPublishers.includes(provider.extension.partnerId)
+                } else {
+                    return provider.id === providerId && provider.extension.category === extType && !lumappsPublishers.includes(provider.extension.partnerId)
+                }
+            }
+        });
+
+        return list.length;
+    }
+
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - list.length) : 0;
 
     const filteredItems = applySortFilter(list, getComparator(order, orderBy), filterName);
 
     const isItemNotFound = filteredItems.length === 0;
-
-    const getStatusColor = (version) => {
-        if (!version) {
-            return 'default'
-        }
-
-        switch (version.status) {
-            case 'deployed':
-            case 'validated':
-                return 'success';
-            case 'draft':
-            case 'suspended':
-                return 'default';
-            case 'pending_validation':
-            case 'in_review':
-                return 'warning';
-            case 'rejected':
-                return 'error';
-            default:
-                return 'default';
-        }
-    }
-
-    const getVersionStatusLabel = (version) => {
-        if (!version) {
-            return 'Empty'
-        }
-        switch (version.status) {
-            case 'deployed':
-                return 'Deployed'
-            case 'validated':
-                return 'Validated'
-            case 'draft':
-                return 'Draft';
-            case 'suspended':
-                return 'Suspended';
-            case 'pending_validation':
-                return 'Pending validation'
-            case 'in_review':
-                return 'In review'
-            case 'rejected':
-                return 'Rejected'
-            default:
-                return 'Empty';
-        }
-    }
-
-    const getMobileCompatibilityLabelColor = (version) => {
-        if (!version || version.status === 'draft') {
-            return 'action'
-        } else if (version.isMobileCompatible) {
-            return 'success'
-        } else {
-            return 'error'
-        }
-    }
-
-    const getPartnerName = (partnerId) => {
-        if (partnersList.length > 0) {
-            const foundPartner = find(partnersList, (partner) => {
-                return partner.id == partnerId;
-            });
-            
-            return foundPartner.name.en;
-        }
-        return 'Undefined';
-    }
 
     return (
         <Card>
@@ -220,7 +161,7 @@ export const AppTableExtension = ({ partnersList, isPartnersLoading, token, load
                     />
                     <TableBody>
                         {filteredItems.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                            const { id, name, category, icon, createdAt, version, public: isPublic, availability, partnerId } = row;
+                            const { id, name, icon } = row;
                             const isItemSelected = selected.indexOf(name) !== -1;
 
                             return (
@@ -237,40 +178,34 @@ export const AppTableExtension = ({ partnersList, isPartnersLoading, token, load
                                     </TableCell>
                                     <TableCell component="th" scope="row" padding="none">
                                         <Stack direction="row" alignItems="center" spacing={2}>
-                                            <Avatar sx={{ bgcolor: 'white' }} alt={name} src={icon.en} />
+                                            <Avatar sx={{ bgcolor: 'white' }} alt={name} src={icon} />
                                             <Typography variant="subtitle2" noWrap>
-                                                {name.en}
+                                                {name}
                                             </Typography>
                                         </Stack>
                                     </TableCell>
-                                    <TableCell align="left">{category}</TableCell>
                                     <TableCell align="center">
-                                        <Label variant="ghost" color={(isPublic && 'success') || 'error'}>
-                                            {isPublic ? 'Public' : 'Private'}
-                                        </Label>
+                                        <Typography variant="subtitle2" noWrap>
+                                            {getNumberOfExtension(id)}
+                                        </Typography>
                                     </TableCell>
                                     <TableCell align="center">
-                                        <Tooltip title="Delete">
-                                            <Label variant="ghost" color={(availability === 'open' && 'success') || 'error'}>
-                                                {availability === 'open' ? 'Open' : 'Marketplace'}
-                                            </Label>
-                                        </Tooltip>
-                                    </TableCell>
-                                    <TableCell align="center">{moment(createdAt).format('DD/MM/YYYY')}</TableCell>
-                                    <TableCell align="center">
-                                        <Label variant="ghost" color={getStatusColor(version)}>
-                                            {getVersionStatusLabel(version)}
-                                        </Label>
+                                        <Typography variant="subtitle2" noWrap>
+                                            {getNumberOfExtension(id, 'micro_app')}
+                                        </Typography>
                                     </TableCell>
                                     <TableCell align="center">
-                                        {version && version.isMobileCompatible ? (
-                                            <CheckCircleIcon color={getMobileCompatibilityLabelColor(version)}/>
-                                        ) : ' - '}
-                                       
+                                        <Typography variant="subtitle2" noWrap>
+                                            {getNumberOfExtension(id, 'widget')}
+                                        </Typography>
                                     </TableCell>
-                                    <TableCell align="left">{getPartnerName(partnerId)}</TableCell>
+                                    <TableCell align="center">
+                                        <Typography variant="subtitle2" noWrap>
+                                            {getNumberOfExtension(id, 'search')}
+                                        </Typography>
+                                    </TableCell>
                                     <TableCell align="right">
-                                        <UserMoreMenu detailsLink={`/dashboard/extension/${id}`} pendoExtensionId={id} pendoExtensionName={name.en} />
+                                        <UserMoreMenu detailsLink={`/dashboard/extension/${id}`} />
                                     </TableCell>
                                 </TableRow>
                             );

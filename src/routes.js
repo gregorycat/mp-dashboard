@@ -13,7 +13,9 @@ import NotFound from './pages/Page404';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import { DashoardExtension } from './pages/DashboardExtension';
+import { DashoardMicroApp } from './pages/DashboardMicroApp';
 import { DashboardPartner } from './pages/DashboardPartner';
+import { DashboardProvider } from "./pages/DashboardProvider";
 
 
 // ----------------------------------------------------------------------
@@ -25,7 +27,9 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { path: 'extensions', element: <DashoardExtension /> },
+        { path: 'micro-apps', element: <DashoardMicroApp /> },
         { path: 'partners', element: <DashboardPartner /> },
+        { path: 'providers', element: <DashboardProvider /> },
         { path: 'partner/:id', element: <Partner /> },
         { path: 'extension/:id', element: <Extension /> },
         { path: 'user', element: <User /> },

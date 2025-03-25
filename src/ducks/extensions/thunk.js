@@ -1,9 +1,26 @@
-import { version } from 'react-dom';
+import { find } from 'lodash';
+
 import * as extensionApi from '../../api/extension';
 import * as partnerApi from '../../api/partner';
 import * as versionApi from '../../api/version';
+import * as providerApi from '../../api/providers';
 import { extensionListSelector, partnersExtensionSelector, partnerSelector, extensionSelector } from './selector';
 import { actions } from './slice';
+import publisherLocations from '../../publisher-location.json';
+
+const loadProviders = (token) => async (dispatch) => {
+    try {
+        dispatch(actions.setIsLoadingProviders({ loading: true}));
+
+        const data = await providerApi.getProviders({ token });
+
+        dispatch(actions.addProviders(data));
+    } catch (error) {
+        console.log(error);
+    } finally {
+        dispatch(actions.setIsLoadingProviders({ loading: false}));
+    }
+}
 
 const loadExtensions = (token, cursor) => async (dispatch) => {
     try {
@@ -13,11 +30,24 @@ const loadExtensions = (token, cursor) => async (dispatch) => {
         dispatch(actions.addExtensions(data));
     } catch (error) {
         console.log(error);
-
     } finally {
         dispatch(actions.setIsLoadingExtensions({ loading: false }));
     }
 }
+
+const loadAvailableExtensions = (token, cursor) => async (dispatch) => {
+    try {
+        dispatch(actions.setIsLoadingAvailableExtensions({ loading: true }));
+        const data = await extensionApi.getAvailableExtensions({ token, cursor });
+
+        dispatch(actions.addAvailableExtensions(data));
+    } catch (error) {
+        console.log(error);
+    } finally {
+        dispatch(actions.setIsLoadingAvailableExtensions({ loading: false}));
+    }
+}
+
 
 const fetchExtensions = async (extensions, token, cursor) => {
     const data = await extensionApi.getExtensions({ token, cursor });
@@ -25,10 +55,22 @@ const fetchExtensions = async (extensions, token, cursor) => {
     extensions.push(...data.items);
 
     if (data.more) {
-        return fetchExtensions(data.items, token, data.cursor);
+        return fetchExtensions(extensions, token, data.cursor);
     }
 
     return extensions;
+}
+
+const fetchAvailableExtensions = async (availableExtensions, token, cursor) => {
+    const data = await extensionApi.getAvailableExtensions({ token, cursor });
+
+    availableExtensions.push(...data.items);
+    console.log(data.more);
+    if (data.more) {
+        return fetchAvailableExtensions(availableExtensions, token, data.cursor);
+    }
+
+    return availableExtensions;
 }
 
 const loadAllExtensions = (token) => async (dispatch) => {
@@ -43,6 +85,20 @@ const loadAllExtensions = (token) => async (dispatch) => {
 
     } finally {
         dispatch(actions.setIsLoadingExtensions({ loading: false }));
+    }
+}
+
+const loadAllAvailableExtensions = (token) => async (dispatch) => {
+    try {
+        dispatch(actions.setIsLoadingAvailableExtensions({ loading: true}));
+
+        const data = await fetchAvailableExtensions([], token, undefined);
+
+        dispatch(actions.addAllAvailableExtensions(data));
+    } catch (error) {
+        console.log(error);
+    } finally {
+        dispatch(actions.setIsLoadingAvailableExtensions({ loading: false }));
     }
 }
 
@@ -65,8 +121,10 @@ const loadAllPartners = (token) => async (dispatch, getState) => {
         const data = await fetchPartners([], token, undefined);
         const state = getState();
         data.forEach((entry) => {
+            const location = find(publisherLocations, (publisherLocation) => (entry.id === publisherLocation.id));
             const extensions = partnersExtensionSelector(state, { partnerId: entry.id });
             entry.extensions = extensions;
+            entry.location = location
         })
 
         dispatch(actions.addAllPartners(data));
@@ -93,7 +151,7 @@ const fetchExtensionVersions = async (version, token, extensionId, cursor) => {
 const fetchExtensionsVersions = async (extensions, token, partnerId, dispatch) => {
     for (const extension of extensions) {
         const data = await fetchExtensionVersions([], token, extension.id, undefined);
-        dispatch(actions.addAllVersions({data, partnerId, extensionId: extension.id }));
+        dispatch(actions.addAllVersions({ data, partnerId, extensionId: extension.id }));
     };
 }
 
@@ -104,11 +162,11 @@ const loadPartnerVersions = (token, partnerId) => async (dispatch, getState) => 
         const partner = partnerSelector(getState(), { partnerId });
 
         await fetchExtensionsVersions(partner.extensions, token, partnerId, dispatch);
-        
-        dispatch(actions.setPartnerVersionDefined({ loaded: true, partnerId}))
+
+        dispatch(actions.setPartnerVersionDefined({ loaded: true, partnerId }))
     } catch (error) {
         console.log(error);
-        
+
     } finally {
         dispatch(actions.setIsLoadingVersions({ loading: false }));
     }
@@ -155,7 +213,7 @@ const loadExtensionVersions = (token, extensionId) => async (dispatch, getState)
         dispatch(actions.setIsLoadingVersions({ loading: true }));
 
         const extension = extensionSelector(getState(), { extensionId });
-        
+
         if (!extension) {
             throw new Error(`No exxtenion found with this id : ${extensionId}`);
         }
@@ -204,12 +262,15 @@ const loadExtensionReview = (token, extensionId) => async (dispatch, getState) =
 }
 
 
-export { 
-    loadExtensions, 
-    loadAllExtensions, 
-    loadExtensionsVersions, 
-    loadExtensionVersions, 
-    loadAllPartners, 
-    loadPartnerVersions, 
-    loadExtensionReview 
+export {
+    loadProviders,
+    loadExtensions,
+    loadAvailableExtensions,
+    loadAllExtensions,
+    loadAllAvailableExtensions,
+    loadExtensionsVersions,
+    loadExtensionVersions,
+    loadAllPartners,
+    loadPartnerVersions,
+    loadExtensionReview
 };

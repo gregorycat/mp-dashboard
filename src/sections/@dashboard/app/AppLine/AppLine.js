@@ -1,21 +1,22 @@
 // React
 import { useEffect, useState } from 'react';
 //lodash
-import { sortBy, filter } from 'lodash';
+import { sortBy, includes } from 'lodash';
 // @mui
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CircularProgress, Box, Chip } from '@mui/material';
 import { CalendarMonth, AllInclusive } from '@mui/icons-material';
 import { ResponsiveLine } from '@nivo/line';
 import moment from 'moment';
-
-
-// ----------------------------------------------------------------------
+import { lumappsPublishers } from '../../../../constants';
 
 // ----------------------------------------------------------------------
 
+// ----------------------------------------------------------------------
 
-export const AppLine = ({ title, subheader, list, dateRange, ...other }) => {
+
+
+export const AppLine = ({ title, subheader, list, dateRange, displayLumAppsPublisher, ...other }) => {
     const [serie, setSerie] = useState();
     const [isSerieLoading, setSerieLoading] = useState(false);
 
@@ -52,13 +53,17 @@ export const AppLine = ({ title, subheader, list, dateRange, ...other }) => {
  */
 
             sortedList.forEach((entry) => {
-                count += 1;
-                data.push({
-                    x: new Date(entry.createdAt),
-                    y: count,
-                    key: entry.name.en,
-                });
+                if (displayLumAppsPublisher || !includes(lumappsPublishers, entry.partnerId)) {
+                    count += 1;
+
+                    data.push({
+                        x: new Date(entry.createdAt),
+                        y: count,
+                        key: entry.name.en,
+                    });
+                }
             });
+
 
             const dataSerie = {
                 id: 'list',
@@ -69,7 +74,7 @@ export const AppLine = ({ title, subheader, list, dateRange, ...other }) => {
             setSerie(dataSerie);
             setSerieLoading(false)
         }
-    }, [list, dateRange]);
+    }, [list, dateRange, displayLumAppsPublisher]);
 
     return (
         <Card {...other}>

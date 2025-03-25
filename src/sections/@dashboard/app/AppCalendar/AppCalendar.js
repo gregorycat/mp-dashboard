@@ -1,27 +1,36 @@
 // React
 import { useEffect, useState } from 'react';
 //lodash
-import { countBy, sortBy } from 'lodash';
+import { countBy, sortBy, filter, includes } from 'lodash';
 // @mui
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CircularProgress, Box } from '@mui/material';
 import { ResponsiveCalendarCanvas } from '@nivo/calendar';
-
 import moment from 'moment';
 
-// ----------------------------------------------------------------------
+import { lumappsPublishers } from '../../../../constants';
 
 // ----------------------------------------------------------------------
 
+// ----------------------------------------------------------------------
 
-export const AppCalendar = ({ title, subheader, list, ...other }) => {
+
+export const AppCalendar = ({ title, subheader, displayLumAppsPublisher, list, ...other }) => {
     const [serie, setSerie] = useState();
     const [isSerieLoading, setSerieLoading] = useState(false);
 
     useEffect(() => {
+        let microApps = list;
         if (list && list.length > 0) {
             setSerieLoading(true)
-            const aggregation = countBy(list, (entry) => {
+
+            if (!displayLumAppsPublisher) {
+                microApps = filter(list, (microApps) => {
+                    return !includes(lumappsPublishers, microApps.partnerId)
+                  })
+            }
+
+            const aggregation = countBy(microApps, (entry) => {
                 return entry.createdAt.split('T')[0];
             });
             const data = [];
@@ -42,7 +51,7 @@ export const AppCalendar = ({ title, subheader, list, ...other }) => {
             setSerie(sortedData);
             setSerieLoading(false)
         }
-    }, [list]);
+    }, [list, displayLumAppsPublisher]);
 
     const CustomTooltip = data => {
         if (data.value === undefined) {

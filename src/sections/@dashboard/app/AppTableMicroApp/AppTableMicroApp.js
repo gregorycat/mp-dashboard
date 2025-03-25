@@ -17,7 +17,6 @@ import {
     TablePagination,
     Tooltip,
 } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 // components
 import SearchNotFound from '../../../../components/SearchNotFound';
 import Label from '../../../../components/Label';
@@ -27,12 +26,10 @@ import { UserListHead, UserListToolbar, UserMoreMenu } from '../../user';
 
 const TABLE_HEAD = [
     { id: 'name.en', label: 'Name', alignLeft: true },
-    { id: 'catogory', label: 'Type', alignLeft: false },
     { id: 'public', label: 'Visibility', alignLeft: false },
     { id: 'availability', label: 'Availability', alignLeft: false },
     { id: 'createdAt', label: 'Creation Date', alignLeft: false },
     { id: 'version.status', label: 'Last version status', alignLeft: false },
-    { id: 'version.isMobileCompatible', label: 'Mobile compatible', alignLeft: false },
     { id: 'partnerId', label: 'Publisher', alignLeft: false },
     { id: '' },
 ];
@@ -68,7 +65,7 @@ function applySortFilter(array, comparator, query) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-export const AppTableExtension = ({ partnersList, isPartnersLoading, token, loadPartners, loadAllPartners, list }) => {
+export const AppTableMicroApp = ({ partnersList, isPartnersLoading, loadAllPartners, token, list }) => {
     const [page, setPage] = useState(0);
     const [order, setOrder] = useState('asc');
     const [selected, setSelected] = useState([]);
@@ -181,26 +178,17 @@ export const AppTableExtension = ({ partnersList, isPartnersLoading, token, load
         }
     }
 
-    const getMobileCompatibilityLabelColor = (version) => {
-        if (!version || version.status === 'draft') {
-            return 'action'
-        } else if (version.isMobileCompatible) {
-            return 'success'
-        } else {
-            return 'error'
-        }
-    }
-
     const getPartnerName = (partnerId) => {
         if (partnersList.length > 0) {
             const foundPartner = find(partnersList, (partner) => {
                 return partner.id == partnerId;
             });
-            
+
             return foundPartner.name.en;
         }
         return 'Undefined';
     }
+
 
     return (
         <Card>
@@ -243,7 +231,7 @@ export const AppTableExtension = ({ partnersList, isPartnersLoading, token, load
                                             </Typography>
                                         </Stack>
                                     </TableCell>
-                                    <TableCell align="left">{category}</TableCell>
+
                                     <TableCell align="center">
                                         <Label variant="ghost" color={(isPublic && 'success') || 'error'}>
                                             {isPublic ? 'Public' : 'Private'}
@@ -262,13 +250,8 @@ export const AppTableExtension = ({ partnersList, isPartnersLoading, token, load
                                             {getVersionStatusLabel(version)}
                                         </Label>
                                     </TableCell>
-                                    <TableCell align="center">
-                                        {version && version.isMobileCompatible ? (
-                                            <CheckCircleIcon color={getMobileCompatibilityLabelColor(version)}/>
-                                        ) : ' - '}
-                                       
-                                    </TableCell>
-                                    <TableCell align="left">{getPartnerName(partnerId)}</TableCell>
+                                    <TableCell align="center">{getPartnerName(partnerId)}</TableCell>
+
                                     <TableCell align="right">
                                         <UserMoreMenu detailsLink={`/dashboard/extension/${id}`} pendoExtensionId={id} pendoExtensionName={name.en} />
                                     </TableCell>

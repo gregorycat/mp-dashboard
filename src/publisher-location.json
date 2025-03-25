@@ -1,0 +1,1017 @@
+[
+    {
+        "id": "acf5dc40-911f-4845-9a15-c02698924a8a",
+        "name": "411Labs, Inc.",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "b114aba3-75fb-4b85-8bf7-f87e326c8e5b",
+        "name": "abeille Assurances",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "a11c6ea0-d28d-4614-b57b-f61d599d11b5",
+        "name": "Achievers",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "f17b6e05-8b87-4075-81e5-55b30aa7f9c9",
+        "name": "ageona",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "9ce232c6-6d51-44ae-825d-6cccac32e25d",
+        "name": "Airbus",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "8c82a5c8-6da6-474c-beda-19f15c06eb42",
+        "name": "Akamai",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "ba7f0684-17b2-491e-ba6c-d2d588fc586f",
+        "name": "Allianz",
+        "region": "EMEA",
+        "country": "Germany",
+        "countryCode": "DEU"
+    },
+    {
+        "id": "c9c888d6-d1bc-4a4b-89d5-323fdcb7d3b6",
+        "name": "AODocs",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "61c151cd-bd61-4bea-ac5f-9e751abe847b",
+        "name": "Ariella Digital Consulting",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "87d473c8-2249-48ab-88cd-1939d74db098",
+        "name": "Ascension Healthcare",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "a6f3fe89-9a39-4500-85bc-1c96f6fa81ec",
+        "name": "Atolio",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "d77005fe-d8c6-434f-ae06-93a316581b1d",
+        "name": "Awardco",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "8cf348d8-5bcf-4f45-9763-f43f75b88759",
+        "name": "Bpifrance",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "daa622ed-3ca1-4a78-a1b8-c87a7c081f98",
+        "name": "BPM GROUP",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "dfbf7109-f48e-4a65-a61e-8f4439f6b1f8",
+        "name": "Brandlive",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "2e616655-2d09-45af-a0b9-c4525e3a0f77",
+        "name": "Capacity AI",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "6ae475aa-42a5-4198-9823-220e390cc04d",
+        "name": "Capital One",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "bf285635-589e-42b0-a391-cba9db2b4ad9",
+        "name": "Chanel",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "3df3e148-8054-4bc9-8c54-a5875efe9da0",
+        "name": "Cherokee Nation Entertainment",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "9d14e387-0431-4bd4-92a0-c41bca009974",
+        "name": "CHS",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "75bfb742-0da2-48c5-bbf6-0c54fe468a10",
+        "name": "Cloud Software Group",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "2790b442-bc39-41c9-804b-dfcffa5a4b2f",
+        "name": "Coda",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "bd2aa94c-4cc4-4773-b905-a33147ac050f",
+        "name": "Comeen",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "886c5b1f-f221-4bff-b8b1-dbac37cfafe6",
+        "name": "Community extension team",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "337531fb-ddb2-4674-b728-6ed8b153725c",
+        "name": "Conseil régional Auvergne-Rhône-Alpes",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "33b9e9da-0738-4bf0-93a4-a070a77484e1",
+        "name": "Delinea",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "ad3e0d9d-43d9-4cf7-b138-0d576255f21a",
+        "name": "Densan System",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "6df58374-38cc-41c9-9531-aa9a08d4fdbb",
+        "name": "Devoteam G Cloud",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "724bd383-4d0d-44f6-94d9-b554c75367fe",
+        "name": "DISH",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "5d8036eb-6bbb-4d2d-9a8f-0b6977b5bf3c",
+        "name": "DoorDash",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "ec1eedb0-11fe-40ef-8464-fe56ee36a2ee",
+        "name": "ECOCEA - FABRIK WEB LVMH",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "5aaf6c3b-99c5-4e09-b693-206d839d7136",
+        "name": "Edifixio",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "4e25b5d3-eec7-47c3-ac03-f6a78821967f",
+        "name": "E.Leclerc",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "01da0ca4-deeb-4652-85d7-8c9c79dfd503",
+        "name": "Electronic Arts",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "c341a8b9-08e1-43cb-a810-850ed7efc87d",
+        "name": "EQT",
+        "region": "EMEA",
+        "country": "Sweden",
+        "countryCode": "SWE"
+    },
+    {
+        "id": "6947e8d0-8a85-49ce-858f-df4c1b7c77e6",
+        "name": "Espressive",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "3e8acd98-fcd1-4dbc-ad0d-6a20eaf47fbd",
+        "name": "Eureden",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "67cd9174-b3a1-4ccd-873b-a492ded23780",
+        "name": "Eviden",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "3b004be6-ec5c-42ae-b083-9d05803104a9",
+        "name": "Exness",
+        "region": "EMEA",
+        "country": "Cyprus",
+        "countryCode": "CYP"
+    },
+    {
+        "id": "f08ad57c-e644-4efd-9be6-5c580d1e89a2",
+        "name": "Fabernovel",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "4467540b-32bc-4289-a1ef-99c475de1934",
+        "name": "Five30am",
+        "region": "EMEA",
+        "country": "Estonia",
+        "countryCode": "EST"
+    },
+    {
+        "id": "909ecc48-aef1-46af-9303-43a62ea12463",
+        "name": "FM Logistic Corporate",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "0c033cd7-5621-4f7a-8c72-d7712aba99b0",
+        "name": "g company",
+        "region": "EMEA",
+        "country": "Netherlands",
+        "countryCode": "NLD"
+    },
+    {
+        "id": "723ea361-d112-4ae7-a9ce-db7391eeb107",
+        "name": "GEODIS",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "5d3bfca6-972f-4b84-9774-417e70a75708",
+        "name": "GIE IDEA TECHNOLOGIES",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "56ce0401-2544-48b7-b8ff-3da3763913de",
+        "name": "Giphar",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "6c44c62d-56f8-445e-9475-29afa6522c67",
+        "name": "Glean Technologies",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "acab7863-9aba-4547-b621-988b85d08646",
+        "name": "Google",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "d5d1730a-be72-4d08-a8d4-4168fbb6566b",
+        "name": "Grand Paris Sud Est Avenir",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "c47d30f7-1e89-4521-8bf7-43c29c9afe4a",
+        "name": "Guider Global Limited",
+        "region": "EMEA",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+    },
+    {
+        "id": "63b745e3-17d8-4532-9716-64b169d2cb8d",
+        "name": "Guidewire",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "22c94841-6172-485a-91df-90ffef0365b1",
+        "name": "Harriet",
+        "region": "EMEA",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+    },
+    {
+        "id": "0b555d25-a3c0-4ecc-a8bc-4601b8db19b9",
+        "name": "HIRSCHTEC GmbH",
+        "region": "EMEA",
+        "country": "Germany",
+        "countryCode": "DEU"
+    },
+    {
+        "id": "8d43893b-d55b-4768-937c-a3163f6f6eb4",
+        "name": "H&M",
+        "region": "EMEA",
+        "country": "Sweden",
+        "countryCode": "SWE"
+    },
+    {
+        "id": "cd044104-923f-48ec-9935-5f360ece6f70",
+        "name": "HomeServe",
+        "region": "EMEA",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+    },
+    {
+        "id": "3704fd88-e55e-4b38-ad57-e53b5c81828f",
+        "name": "Hubert Burda Media",
+        "region": "EMEA",
+        "country": "Germany",
+        "countryCode": "DEU"
+    },
+    {
+        "id": "da3d5426-adb8-45fc-bf46-694b9e9fb0de",
+        "name": "Hubi.ai",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "b683ec77-99d2-4d91-a2fa-ec5b6778b0ef",
+        "name": "Huware",
+        "region": "EMEA",
+        "country": "Italy",
+        "countryCode": "ITA"
+    },
+    {
+        "id": "b12d287e-1efd-4c30-94d7-5797f5761859",
+        "name": "Hype1000",
+        "region": "EMEA",
+        "country": "Germany",
+        "countryCode": "DEU"
+    },
+    {
+        "id": "d21327c2-02d9-432a-9474-b6926bc570dc",
+        "name": "Inaubi-DEV",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "6595a7fa-29e8-4144-b332-1c0b62ec4f1d",
+        "name": "Indeed",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "2a050926-2b63-496c-a04e-57048a22c7ea",
+        "name": "Infinite Square Dev",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "fb38d369-a1f4-4c48-b4f7-7cf4c9ec55c8",
+        "name": "LumApps",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "69b9f419-8310-4f24-a6bd-7e046c9b3118",
+        "name": "IONOS SE",
+        "region": "EMEA",
+        "country": "Germany",
+        "countryCode": "DEU"
+    },
+    {
+        "id": "76a2a26d-788b-4cf6-8f57-d0b2787c06e3",
+        "name": "John Lewis Partnership",
+        "region": "EMEA",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+    },
+    {
+        "id": "ba29ec8f-682c-43e8-91a7-ed77ab7d5d81",
+        "name": "JOIN Stories",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "273855ac-0089-4dcf-b125-dd8099c5d4f5",
+        "name": "Kannelle",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "20af0bfc-4a6c-4d90-acc1-2cdc678bd379",
+        "name": "Kansai Airports",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "4a1ea47b-61aa-4be3-bc5f-ec76b5b81505",
+        "name": "KRYS GROUP",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "b3f0715d-4bca-4417-bde8-c6b32393b260",
+        "name": "Lecko",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "97181ac4-34a9-42d3-b322-e516346c566c",
+        "name": "Léon Grosse",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "9ab2321a-20de-49c5-80db-f3db31af5bc6",
+        "name": "Les Dave",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "b203e48d-f93e-4a25-9e1c-9a5a0a5a2231",
+        "name": "les grands chais de France",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "81b3e079-6f70-49bc-8c57-a341fc3328ca",
+        "name": "Leslie test",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "a848726c-7ca6-4f42-99cc-72fc16a1a734",
+        "name": "Letsignit Dev",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "7de031a3-73b4-4bd0-adb2-f2a697a42d15",
+        "name": "Linkers",
+        "region": "EMEA",
+        "country": "Ukraine",
+        "countryCode": "UKR"
+    },
+    {
+        "id": "ca12184f-2f5a-41ea-8866-5aaf1f45c9cb",
+        "name": "LumApps CMS",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "defd27a2-ca20-4dc5-9b61-4b43f1a9042f",
+        "name": "LumApps IAM",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "85f56888-83f7-4a49-8232-d7859cf4e843",
+        "name": "LumApps Playground",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "558b1bb2-6f67-4d3c-b9b7-9204fcbdd019",
+        "name": "LumApps Preview",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "22dbf35e-0df6-41a6-a8c4-fb28cae7ead0",
+        "name": "LumApps Training",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "8ae13198-5f1a-4d51-83ae-9b9211d373d3",
+        "name": "Macif",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "3e0d511d-8617-4207-95ed-3c9607832466",
+        "name": "MicroAd, Inc.",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "c42a26fe-a031-4f07-97c1-8ce4545a1d1b",
+        "name": "Mitsui & Co., Ltd.",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "7ef58888-62d9-4a83-8c59-e1cf9dfe3c4d",
+        "name": "Mosaique",
+        "region": "EMEA",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+    },
+    {
+        "id": "603d932f-6993-4e23-8178-6d5b096c7b01",
+        "name": "Motorola Solutions, Inc.",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "e118e976-9285-4f80-b966-74c123648be7",
+        "name": "New Relic",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "ae4397c4-47eb-4dde-8331-fb730627ff4f",
+        "name": "Northern Ground",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "7556bf5a-6305-4790-ada2-e0800f8a16af",
+        "name": "NVA",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "49857384-3caf-4481-98fd-1601b56c19bf",
+        "name": "Onix Networking",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "9b025722-c619-4ea2-802b-009c968a5d64",
+        "name": "OpenText",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "7d762614-d7b8-48c0-ae4d-e14898d3e55b",
+        "name": "oppscience",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "82f7d4f5-5c98-4e41-b2a3-84d10f829aac",
+        "name": "Palo Alto Networks",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "1f606acf-c5f5-43c5-b860-c30e0cc2d9c6",
+        "name": "Palo Alto Networks.com",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "1f4f408c-2de2-484d-88ab-a7f290cdec2f",
+        "name": "Pennymac",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "b6d9bdcf-63b7-416d-9da7-c3689ffe2b8d",
+        "name": "Place&Co",
+        "region": "JAPAC",
+        "country": "Australia",
+        "countryCode": "AUS"
+    },
+    {
+        "id": "1d7354de-f97a-4128-b0aa-3dd43d24e692",
+        "name": "Point32Health",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "2faa6561-a07d-4a8b-8ebb-e9f55b616ee2",
+        "name": "pointstar",
+        "region": "JAPAC",
+        "country": "Singapore",
+        "countryCode": "MYS"
+    },
+    {
+        "id": "9455b334-7af5-4712-98f5-9b34acc129e5",
+        "name": "Publicis Sapient",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "cf34c7e4-82e6-4113-b7e0-7608c734dcf8",
+        "name": "Rakumo",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "94d3c3a9-b4c3-4131-b3ce-8bf455f4363b",
+        "name": "RATP",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "3f208647-4f9d-44a6-8b55-3298df8a1cd4",
+        "name": "Reingold",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "fdec772e-f548-446d-9d3c-292ee4fd00ac",
+        "name": "ReSources",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "cd54179a-30a3-4779-a81c-69baab128dde",
+        "name": "Rise Up",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "bc6d3dae-dc6b-4a73-90ad-2f330a322753",
+        "name": "Roadoo",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "cd6705d4-116d-4d3a-8f1d-23cf27b3cb26",
+        "name": "RTBF",
+        "region": "EMEA",
+        "country": "Belgium",
+        "countryCode": "BEL"
+    },
+    {
+        "id": "103f36ac-327e-45e6-9cd0-76c1a8f74608",
+        "name": "rtl",
+        "region": "EMEA",
+        "country": "Netherlands",
+        "countryCode": "NLD"
+    },
+    {
+        "id": "8cc92240-c7e7-4803-a3e6-edceb2a3b816",
+        "name": "SADA",
+        "region": "JAPAC",
+        "country": "Malaysia",
+        "countryCode": "MYS"
+    },
+    {
+        "id": "919a81a8-c50a-4fed-a964-0917711eda28",
+        "name": "Saegus",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "d91aeebb-8297-468a-8a15-376dda00e9a3",
+        "name": "Search",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "18b8cc05-2f6c-45b3-8970-180bc8bd9c5d",
+        "name": "SFEIR",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "8495ba8a-f07d-4800-af96-718f2fb253a9",
+        "name": "Signitic",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "0d883a6e-e402-4e19-b08b-c54bbe342422",
+        "name": "Sinequa",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "b77f59b3-8963-4b13-88c1-7a89d88ed5e4",
+        "name": "Skykit",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "7c87c91f-45f6-4323-be99-d0ba66f27b7c",
+        "name": "Social Edge Consulting",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "c90ff73b-0ef4-4045-86e2-fcd7a2f27758",
+        "name": "Scotec",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "f28a5ff9-6a13-41f7-bde3-cbd5bc416e39",
+        "name": "Springer Nature",
+        "region": "EMEA",
+        "country": "Germany",
+        "countryCode": "DEU"
+    },
+    {
+        "id": "199dd32a-43bf-41f1-bc7c-5f0d32da1f02",
+        "name": "SYSLABO CO.,LTD.",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "70f72da2-b4ec-4248-9a12-f3b4fd4c1b1a",
+        "name": "Teach On Mars",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "dad92252-765f-413b-b848-c831f3e93c2f",
+        "name": "Thornton Tomasetti",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "732bcc43-c113-4eac-bb1b-eaf0e72af4ff",
+        "name": "Thoughtworks",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "89846a76-ea23-4a4a-8e08-42af19cb587d",
+        "name": "Transavia",
+        "region": "EMEA",
+        "country": "Netherlands",
+        "countryCode": "NLP"
+    },
+    {
+        "id": "6a71bf1a-deef-45b6-a6e7-c0ec30525f76",
+        "name": "Unleash Lab",
+        "region": "EMEA",
+        "country": "Israel",
+        "countryCode": "ISR"
+    },
+    {
+        "id": "666ef675-4633-4f9c-9002-5ebe988cafe2",
+        "name": "UPMC",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "8e71a213-41dd-4b51-bf0d-1b953d9a177a",
+        "name": "Valeo",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "2ce84c89-dd78-475e-8e7f-881c93ecef08",
+        "name": "Veolia",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "72e661bf-bc40-4dfe-8120-a43ac86e9870",
+        "name": "vizirco",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "5aef75fb-0248-4c1c-81d8-adc9ef6a541c",
+        "name": "Walls.io",
+        "region": "EMEA",
+        "country": "Austria",
+        "countryCode": "AUT"
+    },
+    {
+        "id": "d0f20f5f-623b-464f-9dde-6491a52ac0df",
+        "name": "we advocacy",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "d1e2bca1-bc0b-4fe7-812e-19e80fec9888",
+        "name": "Wedocom",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "79f4ee10-021d-4b44-a2c7-520f147fa5c0",
+        "name": "Wedocom-test",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "a2cb3e92-e50c-4d7e-bec9-8aa71d427675",
+        "name": "Wex Inc.",
+        "region": "EMEA",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "9ffd276a-508a-465d-89d6-bdc25be215a5",
+        "name": "WorkBuzz Analytics Limited",
+        "region": "EMEA",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+    },
+    {
+        "id": "7e6362d6-933d-458d-b111-cbe01e874de5",
+        "name": "Workday Inc.",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "d79c6b19-4b48-4182-9c0b-2ef54cf7e6d8",
+        "name": "Workflow by LumApps",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "be86b673-1e37-454f-b807-b6a37843d021",
+        "name": "Wursta",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "bf9264a5-2526-4f4f-b571-2a90d1d01088",
+        "name": "XMCO",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "9582c9dc-e6b5-4353-89d3-d47574e1c158",
+        "name": "Xperi Inc",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "9af53e9a-22e6-41b0-8386-2341a036c14f",
+        "name": "YESWESHARE",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "8a6287a0-06ed-4ce1-bedd-0ff77cdb981a",
+        "name": "Zapier",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "84decd08-cd74-4242-a839-84b3483e5308",
+        "name": "Zendesk",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    },
+    {
+        "id": "4b0f9e3c-bf3f-4740-84c5-7963fbfd3554",
+        "name": "東急不動産株式会社",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "8d9bd717-26b4-4e86-8bb4-619aa62d00de",
+        "name": "パーソルプロセス&テクノロジー株式会社",
+        "region": "JAPAC",
+        "country": "Japan",
+        "countryCode": "JPN"
+    },
+    {
+        "id": "f12d18ab-d471-4cd6-8737-bb7d6e06aa70",
+        "name": "Ouidou",
+        "region": "EMEA",
+        "country": "France",
+        "countryCode": "FRA"
+    },
+    {
+        "id": "06490e4e-1216-43f3-84f8-d88e9edd00b7",
+        "name": "Klaviyo",
+        "region": "NORAM",
+        "country": "USA",
+        "countryCode": "USA"
+    }
+]
