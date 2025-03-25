@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
-import { filter, forEach, find } from 'lodash';
+import { filter, forEach, find, uniqBy, map, includes } from 'lodash';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -26,20 +26,29 @@ import { AppTablePartnerGeo } from 'src/sections/@dashboard/app/AppTablePartnerG
 
 // ----------------------------------------------------------------------
 
-export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoading, isExtensionsLoading, token, loadAllPartners, loadAllExtensions }) => {
+export const DashboardPartner = ({ partnersList, extensionsList, availableExtensionsList, isPartnersLoading, isExtensionsLoading, isAvailableExtensionLoading, token, loadAllPartners, loadAllExtensions, loadAllAvailableExtensions }) => {
   const theme = useTheme();
   const [dateRange, setDateRange] = useState('all');
   const [filteredPartnerList, setFilteredPartnerList] = useState([]);
-  const [filteredExtensionList, setFilteredExtensionList] = useState([]);
   const [partnersWithExtension, setPartnersWithExtension] = useState([]);
+  const [partnersIdWithAvailableExtension, setPartnersIdWithAvailableExtension] = useState([]);
 
   const fetchExtensions = async () => {
     loadAllExtensions(token);
   }
 
+  const fetchAvailableExtensions = async () => {
+    loadAllAvailableExtensions(token);
+  }
+
+  const getExtensionPartners = () => {
+    console.log(map(uniqBy(availableExtensionsList, 'partnerId'), (extension) => extension.partnerId));
+    return map(uniqBy(availableExtensionsList, 'partnerId'), (extension) => extension.partnerId)
+  }
+
   useEffect(() => {
-    if (!isExtensionsLoading && extensionsList.length === 0) {
-      fetchExtensions();
+    if (!isAvailableExtensionLoading && availableExtensionsList.length === 0) {
+      fetchAvailableExtensions();
     }
   }, [extensionsList, fetchExtensions, isExtensionsLoading]);
 
@@ -53,9 +62,15 @@ export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoadi
     }
   }, [partnersList, fetchPartners, isPartnersLoading]);
 
+  useEffect(() => {
+    if (partnersIdWithAvailableExtension.length === 0 && availableExtensionsList && availableExtensionsList.length > 0 && partnersList && partnersList.length > 0) {
+      setPartnersIdWithAvailableExtension(getExtensionPartners());
+    }
+  }, [partnersList, availableExtensionsList])
+
 
   useEffect(() => {
-    if (partnersList.length > 0 && extensionsList.length > 0) {
+    if (partnersList.length > 0 && partnersIdWithAvailableExtension.length > 0) {
       let minDate;
       switch (dateRange) {
         case 'month':
@@ -71,7 +86,11 @@ export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoadi
           break;
       }
 
-      const filteredPartnersList = filter(partnersList, (item) => {
+      const availablePartnerList = filter(partnersList, (partner) => {
+        return includes(partnersIdWithAvailableExtension, partner.id);
+      })
+
+      const filteredPartnersList = filter(availablePartnerList, (item) => {
         if (dateRange === 'all') {
           return true;
         }
@@ -88,10 +107,10 @@ export const DashboardPartner = ({ partnersList, extensionsList, isPartnersLoadi
       });
 
       setFilteredPartnerList(filteredPartnersList);
-      setFilteredExtensionList(filteredExtensionsList);
+      //setFilteredExtensionList(filteredExtensionsList);
     }
 
-  }, [partnersList, extensionsList, dateRange]);
+  }, [partnersList, partnersIdWithAvailableExtension, dateRange]);
 
 
   useEffect(() => {

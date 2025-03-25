@@ -5,7 +5,7 @@ import { filter } from 'lodash';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography, Box, Chip } from '@mui/material';
-import { CalendarMonth, AllInclusive } from '@mui/icons-material';
+import { CalendarMonth, AllInclusive, PeopleOutline } from '@mui/icons-material';
 import moment from 'moment';
 
 // components
@@ -20,6 +20,8 @@ import { AppLine } from 'src/sections/@dashboard/app/AppLine';
 import { AppPie } from 'src/sections/@dashboard/app/AppPie';
 import { AppTableExtension } from 'src/sections/@dashboard/app/AppTableExtension';
 
+import { lumappsPublishers } from '../../constants';
+
 // ----------------------------------------------------------------------
 
 export const DashoardExtension = ({ extensionsList, availableExtensionsList, isExtensionsLoading, isAvailableExtensionsLoading, token, versionsList, isVersionLoading, loadAllExtensions, loadAllAvailableExtensions, loadExtensionsVersions }) => {
@@ -27,6 +29,7 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
   const [extensionDraft, setExtensionDraft] = useState([]);
   const [extensionNoVersion, setExtensionNoVersion] = useState([]);
   const [dateRange, setDateRange] = useState('all');
+  const [displayLumAppsPublisher, setDisplayLumAppsPublisher] = useState(true)
   const [filteredExtensionList, setFilteredExtensionList] = useState([]);
   const [filteredAvailableExtensionList, setFilteredAvailableExtensionList] = useState([]);
   const fetchExtensions = async () => {
@@ -121,6 +124,9 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
     setDateRange(range);
   }
 
+  const handleDisplayLumAppsPublisherClick = () => {
+    setDisplayLumAppsPublisher(!displayLumAppsPublisher);
+  }
 
   return (
     <Page title="Dashboard">
@@ -157,6 +163,13 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
             icon={<CalendarMonth />}
             label="Last Month"
             onClick={() => handleDateRangeClick('month')}
+          />
+          <Chip
+            sx={{ mr: 2 }}
+            color={!displayLumAppsPublisher ? 'primary' : 'default'}
+            icon={<PeopleOutline />}
+            label="Exclude LumApps publisher"
+            onClick={() => handleDisplayLumAppsPublisherClick()}
           />
 
         </Box>
@@ -219,8 +232,8 @@ export const DashoardExtension = ({ extensionsList, availableExtensionsList, isE
           </Grid>
 
           <Grid item xs={12} md={12} lg={12}>
-            {filteredExtensionList && filteredExtensionList.length > 0 && (
-              <AppTableExtension list={filteredExtensionList} />
+            {filteredAvailableExtensionList && filteredAvailableExtensionList.length > 0 && (
+              <AppTableExtension list={filteredAvailableExtensionList} />
             )}
           </Grid>
 
